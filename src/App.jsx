@@ -61,7 +61,7 @@ function App() {
     }
   ]);
 
-  const [sideBarOpen, setSideBarOpen] = useState(false);
+  const [sideBarOpen, setSideBarOpen] = useState(true);
 
   return (
     <>
