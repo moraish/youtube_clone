@@ -14,6 +14,9 @@ import ListItemText from '@mui/material/ListItemText';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
 import MenuIcon from '@mui/icons-material/Menu';
+import AppHeader from './AppHeader';
+import { IconButton } from '@mui/material';
+import zIndex from '@mui/material/styles/zIndex';
 
 
 const drawerWidth = 240;
@@ -23,20 +26,24 @@ export default function AppDrawer() {
 
         <Box sx={{ display: 'flex' }}>
             <CssBaseline />
-            <AppBar position="fixed" sx={{ zIndex: (theme) => theme.zIndex.drawer + 1 }}>
+            <AppHeader />
+            {/* <AppBar position="fixed" sx={{ zIndex: (theme) => theme.zIndex.drawer + 1 }}>
                 <Toolbar>
-                    <MenuIcon sx={{
-                        borderRadius: '50%',
-                        '&:hover': {
-                            boxShadow: '0 0 10px rgba(0, 0, 0, 0.5)',
-                            cursor: 'pointer'
-                        }
-                    }} />
+                    <IconButton size='large'>
+                        <MenuIcon sx={{
+                            borderRadius: '50%',
+                            '&:hover': {
+                                boxShadow: '0 0 10px rgba(0, 0, 0, 0.5)',
+                                cursor: 'pointer'
+                            }
+                        }} />
+                    </IconButton>
                     <Typography variant="h6" noWrap component="div" sx={{ marginLeft: '3%' }}>
                         Clipped drawer
                     </Typography>
                 </Toolbar>
-            </AppBar>
+            </AppBar> */}
+
             <Drawer
                 variant="permanent"
                 sx={{
@@ -78,6 +85,7 @@ export default function AppDrawer() {
                 <Toolbar />
 
             </Box>
+
         </Box>
     );
 }

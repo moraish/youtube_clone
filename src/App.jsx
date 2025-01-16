@@ -5,6 +5,8 @@ import Grid from '@mui/material/Grid2'
 import { useState } from 'react';
 import './App.css';
 import AppDrawer from './components/AppDrawer';
+import AppHeader from './components/AppHeader';
+
 
 
 
@@ -67,7 +69,7 @@ function App() {
     <>
       <AppDrawer />
       <Container sx={{ marginLeft: '240px', marginRight: '0px', width: 'calc(100% - 240px)', overflowX: 'hidden' }} >
-        <Grid container spacing={3}>
+        <Grid container spacing={3} sx={{ scale: 'auto' }}>
           {videos.map((video) => (
             <VideoCard
               key={video.id}
@@ -78,6 +80,7 @@ function App() {
             />
           ))}
         </Grid>
+
       </Container>
     </>
   );
