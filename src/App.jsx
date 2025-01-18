@@ -6,6 +6,7 @@ import { useState } from 'react';
 import './App.css';
 import AppDrawer from './components/AppDrawer';
 import AppHeader from './components/AppHeader';
+import Header from './components/Header';
 
 
 
@@ -68,6 +69,7 @@ function App() {
   return (
     <>
       <AppDrawer />
+
       <Container sx={{ marginLeft: '240px', marginRight: '0px', width: 'calc(100% - 240px)', overflowX: 'hidden' }} >
         <Grid container spacing={3} sx={{ scale: 'auto' }}>
           {videos.map((video) => (
@@ -82,6 +84,7 @@ function App() {
         </Grid>
 
       </Container>
+
     </>
   );
 }

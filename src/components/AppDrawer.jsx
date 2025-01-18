@@ -22,27 +22,13 @@ import zIndex from '@mui/material/styles/zIndex';
 const drawerWidth = 240;
 
 export default function AppDrawer() {
+
     return (
 
         <Box sx={{ display: 'flex' }}>
             <CssBaseline />
             <AppHeader />
-            {/* <AppBar position="fixed" sx={{ zIndex: (theme) => theme.zIndex.drawer + 1 }}>
-                <Toolbar>
-                    <IconButton size='large'>
-                        <MenuIcon sx={{
-                            borderRadius: '50%',
-                            '&:hover': {
-                                boxShadow: '0 0 10px rgba(0, 0, 0, 0.5)',
-                                cursor: 'pointer'
-                            }
-                        }} />
-                    </IconButton>
-                    <Typography variant="h6" noWrap component="div" sx={{ marginLeft: '3%' }}>
-                        Clipped drawer
-                    </Typography>
-                </Toolbar>
-            </AppBar> */}
+
 
             <Drawer
                 variant="permanent"
