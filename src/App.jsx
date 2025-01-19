@@ -68,9 +68,10 @@ function App() {
 
   return (
     <>
-      <AppDrawer />
+
 
       <Container sx={{ marginLeft: '240px', marginRight: '0px', width: 'calc(100% - 240px)', overflowX: 'hidden' }} >
+        <AppDrawer />
         <Grid container spacing={3} sx={{ scale: 'auto' }}>
           {videos.map((video) => (
             <VideoCard

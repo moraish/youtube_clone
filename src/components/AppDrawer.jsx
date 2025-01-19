@@ -1,28 +1,30 @@
 import * as React from 'react';
 import Box from '@mui/material/Box';
 import Drawer from '@mui/material/Drawer';
-import AppBar from '@mui/material/AppBar';
 import CssBaseline from '@mui/material/CssBaseline';
 import Toolbar from '@mui/material/Toolbar';
-import List from '@mui/material/List';
-import Typography from '@mui/material/Typography';
-import Divider from '@mui/material/Divider';
-import ListItem from '@mui/material/ListItem';
-import ListItemButton from '@mui/material/ListItemButton';
-import ListItemIcon from '@mui/material/ListItemIcon';
-import ListItemText from '@mui/material/ListItemText';
-import InboxIcon from '@mui/icons-material/MoveToInbox';
-import MailIcon from '@mui/icons-material/Mail';
-import MenuIcon from '@mui/icons-material/Menu';
 import AppHeader from './AppHeader';
-import { IconButton } from '@mui/material';
-import zIndex from '@mui/material/styles/zIndex';
+import { Button } from '@mui/material';
+import { useState } from 'react';
+import { ClickAwayListener } from '@mui/material';
+import DrawerMenu from './AppDrawer/DrawerMenu';
 
 
 const drawerWidth = 240;
 
 export default function AppDrawer() {
 
+
+    const [drawerOpen, setDrawerOpen] = useState(true);
+
+    function toggleDrawer() {
+        console.log("Clicked!")
+        setDrawerOpen(!drawerOpen);
+    }
+
+    function handleDrawerClose() {
+        setDrawerOpen(false);
+    }
     return (
 
         <Box sx={{ display: 'flex' }}>
@@ -30,48 +32,31 @@ export default function AppDrawer() {
             <AppHeader />
 
 
-            <Drawer
-                variant="permanent"
-                sx={{
-                    width: drawerWidth,
-                    flexShrink: 0,
-                    [`& .MuiDrawer-paper`]: { width: drawerWidth, boxSizing: 'border-box' },
-                }}
-            >
-                <Toolbar />
-                <Box sx={{ overflow: 'auto' }}>
-                    <List>
-                        {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-                            <ListItem key={text} disablePadding>
-                                <ListItemButton>
-                                    <ListItemIcon>
-                                        {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                                    </ListItemIcon>
-                                    <ListItemText primary={text} />
-                                </ListItemButton>
-                            </ListItem>
-                        ))}
-                    </List>
-                    <Divider />
-                    <List>
-                        {['All mail', 'Trash', 'Spam'].map((text, index) => (
-                            <ListItem key={text} disablePadding>
-                                <ListItemButton>
-                                    <ListItemIcon>
-                                        {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                                    </ListItemIcon>
-                                    <ListItemText primary={text} />
-                                </ListItemButton>
-                            </ListItem>
-                        ))}
-                    </List>
-                </Box>
-            </Drawer>
+            <ClickAwayListener onClickAway={handleDrawerClose}>
+                <Drawer
+                    open={drawerOpen}
+                    sx={{
+                        width: drawerWidth,
+                        flexShrink: 0,
+                        [`& .MuiDrawer-paper`]: {
+                            width: drawerWidth,
+                            boxSizing: 'border-box',
+                            bgcolor: 'black',  // Add this line for background color
+                            color: 'white'     // Add this line for text color
+                        },
+                    }}
+                >
+                    <Toolbar />
+                    <DrawerMenu />
+
+                </Drawer>
+            </ClickAwayListener>
             <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
                 <Toolbar />
 
             </Box>
 
+            <Button onClick={toggleDrawer}>Click!</Button>
         </Box>
     );
 }

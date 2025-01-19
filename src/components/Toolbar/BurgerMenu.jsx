@@ -3,17 +3,14 @@ import MenuIcon from '@mui/icons-material/Menu';
 import { useState } from "react";
 
 function BurgerMenu() {
-    const [navOpen, setNavOpen] = useState('false');
-    function onBurgerClick() {
-        setNavOpen(!navOpen);
-    }
+
     return (
         <IconButton
             size="large"
             edge="start"
             color="inherit"
             aria-label="menu"
-            onClick={onBurgerClick}
+            // onClick={toggleDrawer}
             sx={{
                 '&:hover': {
                     bgcolor: 'rgb(66,66,66)'
