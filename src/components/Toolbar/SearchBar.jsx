@@ -15,10 +15,10 @@ const Search = styled('div')(({ theme }) => ({
     width: '100%',
     display: 'flex',
     alignItems: 'center', // Vertical centering
-    [theme.breakpoints.up('sm')]: {
-        marginLeft: theme.spacing(3),
-        width: 'auto',
-    },
+    // [theme.breakpoints.up('sm')]: {
+    //     marginLeft: theme.spacing(3),
+    //     width: 'auto',
+    // },
 }));
 
 const SearchIconWrapper = styled('div')(({ theme }) => ({
