@@ -13,6 +13,8 @@ import OutlinedFlagOutlinedIcon from '@mui/icons-material/OutlinedFlagOutlined';
 import HelpOutlineOutlinedIcon from '@mui/icons-material/HelpOutlineOutlined';
 import FeedbackOutlinedIcon from '@mui/icons-material/FeedbackOutlined';
 
+import { YouTube_Shorts } from './components/AppDrawer/Icons';
+
 
 function App() {
   const [videos, setVideos] = useState([
@@ -91,14 +93,6 @@ function App() {
             />
           ))}
         </Grid>
-
-        {Object.entries(obj).map(([key, value]) => (
-          <div key={key}>
-            <h1>{key}</h1>
-            {value}
-          </div>
-
-        ))}
 
 
       </Container>

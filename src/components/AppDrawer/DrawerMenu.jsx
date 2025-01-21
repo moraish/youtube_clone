@@ -31,13 +31,16 @@ import SettingsOutlinedIcon from '@mui/icons-material/SettingsOutlined';
 import OutlinedFlagOutlinedIcon from '@mui/icons-material/OutlinedFlagOutlined';
 import HelpOutlineOutlinedIcon from '@mui/icons-material/HelpOutlineOutlined';
 import FeedbackOutlinedIcon from '@mui/icons-material/FeedbackOutlined';
+import { YouTube_Studio, YouTube_TV, YouTube_Music, YouTube_Kids, YouTube_Shorts } from './Icons';
+import DrawerFooter from './DrawerFooter';
+import MenuItems from './MenuItems';
 
 
 function DrawerMenu() {
     // const primary_elements = ['Home', 'Shorts', 'Subscriptions', 'YouTube Music']
     const primary_elements = {
         "Home": <HomeIcon sx={{ color: 'white' }} />,
-        "Shorts": <HomeIcon sx={{ color: 'white' }} />,
+        "Shorts": <YouTube_Shorts sx={{ color: 'white' }} />,
         "Subscriptions": <SubscriptionsOutlinedIcon sx={{ color: 'white' }} />,
         "YouTube Music": <PlayCircleOutlinedIcon sx={{ color: 'white' }} />
 
@@ -71,8 +74,13 @@ function DrawerMenu() {
     }
 
 
-
-    const more_youtube = ['YouTube Studio', 'YouTube TV', 'YouTube Music', 'YouTube Kids']
+    // const more_youtube = ['YouTube Studio', 'YouTube TV', 'YouTube Music', 'YouTube Kids']
+    const more_youtube = {
+        "YouTube Studio": <YouTube_Studio />,
+        "YouTube TV": <YouTube_TV />,
+        "YouTube Music": <YouTube_Music />,
+        "YouTube Kids": <YouTube_Kids />
+    }
 
     const settings = {
         'Settings': <SettingsOutlinedIcon sx={{ color: 'white' }} />,
@@ -89,35 +97,9 @@ function DrawerMenu() {
 
     return (
         <Box sx={{ overflow: 'auto' }}>
-            <List>
-                {Object.entries(primary_elements).map(([text, icon]) => (
-                    <ListItem key={text} disablePadding>
-                        <ListItemButton>
-                            <ListItemIcon>
-                                {icon}
-                            </ListItemIcon>
-                            <ListItemText primary={text} />
-                        </ListItemButton>
-                    </ListItem>
-                ))}
-            </List>
-
+            <MenuItems items={primary_elements} />
             <Divider sx={{ bgcolor: 'white', opacity: 0.50 }} />
-            <List>
-
-                <List>
-                    {Object.entries(your_elements).map(([text, icon]) => (
-                        <ListItem key={text} disablePadding>
-                            <ListItemButton>
-                                <ListItemIcon>
-                                    {icon}
-                                </ListItemIcon>
-                                <ListItemText primary={text} />
-                            </ListItemButton>
-                        </ListItem>
-                    ))}
-                </List>
-            </List>
+            <MenuItems items={your_elements} />
             <Divider sx={{ bgcolor: 'white', opacity: 0.50 }} />
             <List>
                 {subscriptions.map((text, index) => (
@@ -132,71 +114,15 @@ function DrawerMenu() {
                 ))}
             </List>
             <Divider sx={{ bgcolor: 'white', opacity: 0.50 }} />
-            <List>
-                {Object.entries(explore).map(([text, icon]) => (
-                    <ListItem key={text} disablePadding>
-                        <ListItemButton>
-                            <ListItemIcon>
-                                {icon}
-                            </ListItemIcon>
-                            <ListItemText primary={text} />
-                        </ListItemButton>
-                    </ListItem>
-                ))}
-            </List>
+            <MenuItems items={explore} />
             <Divider sx={{ bgcolor: 'white', opacity: 0.50 }} />
-            <List>
-                {more_youtube.map((text, index) => (
-                    <ListItem key={text} disablePadding>
-                        <ListItemButton>
-                            <ListItemIcon>
-                                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                            </ListItemIcon>
-                            <ListItemText primary={text} />
-                        </ListItemButton>
-                    </ListItem>
-                ))}
-            </List>
+            <MenuItems items={more_youtube} />
             <Divider sx={{ bgcolor: 'white', opacity: 0.50 }} />
-            <List>
-                {Object.entries(settings).map(([text, icon]) => (
-                    <ListItem key={text} disablePadding>
-                        <ListItemButton>
-                            <ListItemIcon>
-                                {icon}
-                            </ListItemIcon>
-                            <ListItemText primary={text} />
-                        </ListItemButton>
-                    </ListItem>
-                ))}
-            </List>
+            <MenuItems items={settings} />
 
             <Divider sx={{ bgcolor: 'white', opacity: 0.50 }} />
-            <List>
-                {footer.map((text, index) => (
-                    <ListItem key={text} disablePadding>
-                        <ListItemButton>
-                            <ListItemIcon>
-                                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                            </ListItemIcon>
-                            <ListItemText primary={text} />
-                        </ListItemButton>
-                    </ListItem>
-                ))}
-            </List>
-            <Divider sx={{ bgcolor: 'white', opacity: 0.50 }} />
-            <List>
-                {footer_2.map((text, index) => (
-                    <ListItem key={text} disablePadding>
-                        <ListItemButton>
-                            <ListItemIcon>
-                                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                            </ListItemIcon>
-                            <ListItemText primary={text} />
-                        </ListItemButton>
-                    </ListItem>
-                ))}
-            </List>
+
+            <DrawerFooter />
         </Box>
     )
 }
