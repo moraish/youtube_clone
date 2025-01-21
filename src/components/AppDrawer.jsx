@@ -41,8 +41,23 @@ export default function AppDrawer() {
                         [`& .MuiDrawer-paper`]: {
                             width: drawerWidth,
                             boxSizing: 'border-box',
-                            bgcolor: 'black',  // Add this line for background color
-                            color: 'white'     // Add this line for text color
+                            bgcolor: 'black',
+                            color: 'white',
+                            '&::-webkit-scrollbar': {
+                                width: '8px',
+                            },
+                            '&::-webkit-scrollbar-track': {
+                                background: '#000000',
+                            },
+                            '&::-webkit-scrollbar-thumb': {
+                                backgroundColor: '#888888',
+                                borderRadius: '4px',
+                            },
+                            '&::-webkit-scrollbar-thumb:hover': {
+                                backgroundColor: '#666666',
+                            },
+                            scrollbarWidth: 'thin',
+                            scrollbarColor: '#888888 #000000',
                         },
                     }}
                 >

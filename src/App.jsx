@@ -5,10 +5,13 @@ import Grid from '@mui/material/Grid2'
 import { useState } from 'react';
 import './App.css';
 import AppDrawer from './components/AppDrawer';
-import AppHeader from './components/AppHeader';
-import Header from './components/Header';
 
 
+import DownloadIcon from '@mui/icons-material/Download';
+import SettingsOutlinedIcon from '@mui/icons-material/SettingsOutlined';
+import OutlinedFlagOutlinedIcon from '@mui/icons-material/OutlinedFlagOutlined';
+import HelpOutlineOutlinedIcon from '@mui/icons-material/HelpOutlineOutlined';
+import FeedbackOutlinedIcon from '@mui/icons-material/FeedbackOutlined';
 
 
 function App() {
@@ -66,6 +69,11 @@ function App() {
 
   const [sideBarOpen, setSideBarOpen] = useState(true);
 
+  const obj = {
+    "Downloads": <DownloadIcon />,
+    "Cancel": <DownloadIcon />
+  }
+
   return (
     <>
 
@@ -83,6 +91,15 @@ function App() {
             />
           ))}
         </Grid>
+
+        {Object.entries(obj).map(([key, value]) => (
+          <div key={key}>
+            <h1>{key}</h1>
+            {value}
+          </div>
+
+        ))}
+
 
       </Container>
 
