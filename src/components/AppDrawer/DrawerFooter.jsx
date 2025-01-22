@@ -7,7 +7,7 @@ function DrawerFooter() {
 
     return (
         <>
-            <Box display='flex' flexWrap="wrap">
+            <Box display='flex' flexWrap="wrap" marginTop={2}>
                 {footer.map((value, index) => (
                     <Typography key={index}
                         variant="body2"

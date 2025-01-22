@@ -34,9 +34,17 @@ import FeedbackOutlinedIcon from '@mui/icons-material/FeedbackOutlined';
 import { YouTube_Studio, YouTube_TV, YouTube_Music, YouTube_Kids, YouTube_Shorts } from './Icons';
 import DrawerFooter from './DrawerFooter';
 import MenuItems from './MenuItems';
+import { useState } from 'react';
 
 
 function DrawerMenu() {
+
+    const [currentMenu, setCurrentMenu] = useState('Home');
+
+    const handleMenuClick = (menuName) => {
+        setCurrentMenu(menuName);
+    };
+
     // const primary_elements = ['Home', 'Shorts', 'Subscriptions', 'YouTube Music']
     const primary_elements = {
         "Home": <HomeIcon sx={{ color: 'white' }} />,
@@ -89,17 +97,19 @@ function DrawerMenu() {
         'Send feedback': <FeedbackOutlinedIcon sx={{ color: 'white' }} />
     }
 
-
-
-    const footer = ['About', 'Press', 'Copyright', 'Contact us', 'Creators', 'Advertise', 'Developers']
-    const footer_2 = ['Terms', 'Privacy', 'Policy & Safety', 'How YouTube works', 'Test new features', 'NFL Sunday Ticket'] // 2025 Google LLC
+    // const footer = ['About', 'Press', 'Copyright', 'Contact us', 'Creators', 'Advertise', 'Developers']
+    // const footer_2 = ['Terms', 'Privacy', 'Policy & Safety', 'How YouTube works', 'Test new features', 'NFL Sunday Ticket'] // 2025 Google LLC
 
 
     return (
         <Box sx={{ overflow: 'auto' }}>
-            <MenuItems items={primary_elements} />
+            <MenuItems items={primary_elements}
+                currentMenu={currentMenu}
+                onMenuClick={handleMenuClick} />
             <Divider sx={{ bgcolor: 'white', opacity: 0.50 }} />
-            <MenuItems items={your_elements} />
+            <MenuItems items={your_elements}
+                currentMenu={currentMenu}
+                onMenuClick={handleMenuClick} />
             <Divider sx={{ bgcolor: 'white', opacity: 0.50 }} />
             <List>
                 {subscriptions.map((text, index) => (
@@ -114,11 +124,17 @@ function DrawerMenu() {
                 ))}
             </List>
             <Divider sx={{ bgcolor: 'white', opacity: 0.50 }} />
-            <MenuItems items={explore} />
+            <MenuItems items={explore}
+                currentMenu={currentMenu}
+                onMenuClick={handleMenuClick} />
             <Divider sx={{ bgcolor: 'white', opacity: 0.50 }} />
-            <MenuItems items={more_youtube} />
+            <MenuItems items={more_youtube}
+                currentMenu={currentMenu}
+                onMenuClick={handleMenuClick} />
             <Divider sx={{ bgcolor: 'white', opacity: 0.50 }} />
-            <MenuItems items={settings} />
+            <MenuItems items={settings}
+                currentMenu={currentMenu}
+                onMenuClick={handleMenuClick} />
 
             <Divider sx={{ bgcolor: 'white', opacity: 0.50 }} />
 
