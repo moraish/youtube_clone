@@ -20,53 +20,54 @@ export default function AppDrawer({ drawerOpen, setDrawerOpen }) {
     return (
 
         <Box sx={{ display: 'flex' }}>
+            <ClickAwayListener onClickAway={handleDrawerClose}>
+                <Box>
+                    <CssBaseline />
+                    <AppHeader drawerOpen={drawerOpen} setDrawerOpen={setDrawerOpen} />
 
-            <Box>
-                <CssBaseline />
-                <AppHeader drawerOpen={drawerOpen} setDrawerOpen={setDrawerOpen} />
 
 
-
-                <Drawer
-                    open={drawerOpen}
-                    sx={{
-                        width: drawerWidth,
-                        flexShrink: 0,
-                        [`& .MuiDrawer-paper`]: {
+                    <Drawer
+                        open={drawerOpen}
+                        sx={{
                             width: drawerWidth,
-                            boxSizing: 'border-box',
-                            bgcolor: 'black',
-                            color: 'white',
-                            '&::-webkit-scrollbar': {
-                                width: '8px',
+                            flexShrink: 0,
+                            [`& .MuiDrawer-paper`]: {
+                                width: drawerWidth,
+                                boxSizing: 'border-box',
+                                bgcolor: 'black',
+                                color: 'white',
+                                '&::-webkit-scrollbar': {
+                                    width: '8px',
+                                },
+                                '&::-webkit-scrollbar-track': {
+                                    background: '#000000',
+                                },
+                                '&::-webkit-scrollbar-thumb': {
+                                    backgroundColor: '#888888',
+                                    borderRadius: '4px',
+                                },
+                                '&::-webkit-scrollbar-thumb:hover': {
+                                    backgroundColor: '#666666',
+                                },
+                                scrollbarWidth: 'thin',
+                                scrollbarColor: '#888888 #000000',
                             },
-                            '&::-webkit-scrollbar-track': {
-                                background: '#000000',
-                            },
-                            '&::-webkit-scrollbar-thumb': {
-                                backgroundColor: '#888888',
-                                borderRadius: '4px',
-                            },
-                            '&::-webkit-scrollbar-thumb:hover': {
-                                backgroundColor: '#666666',
-                            },
-                            scrollbarWidth: 'thin',
-                            scrollbarColor: '#888888 #000000',
-                        },
-                    }}
-                >
-                    <Toolbar />
-                    <DrawerMenu />
+                        }}
+                    >
+                        <Toolbar />
+                        <DrawerMenu />
 
-                </Drawer>
+                    </Drawer>
 
-                <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
-                    <Toolbar />
+                    <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
+                        <Toolbar />
 
+                    </Box>
+                    {/*  onClick={toggleDrawer} */}
+                    <Button>Click!</Button>
                 </Box>
-                {/*  onClick={toggleDrawer} */}
-                <Button>Click!</Button>
-            </Box>
+            </ClickAwayListener>
         </Box>
     );
 }

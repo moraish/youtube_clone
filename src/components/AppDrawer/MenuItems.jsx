@@ -2,7 +2,9 @@ import { List, ListItem, ListItemIcon, ListItemButton, ListItemText } from "@mui
 
 function MenuItems({ items, currentMenu, onMenuClick }) {
     return (
-        <List>
+        <List sx={{
+            marginLeft: 2,
+        }}>
             {Object.entries(items).map(([text, icon]) => (
                 <ListItem key={text} disablePadding sx={{
                     borderRadius: 4,

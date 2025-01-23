@@ -1,4 +1,4 @@
-import { Box, List, ListItem, ListItemButton, ListItemIcon, ListItemText, Divider } from '@mui/material';
+import { Box, List, ListItem, ListItemButton, ListItemIcon, ListItemText, Divider, Avatar } from '@mui/material';
 import InboxIcon from '@mui/icons-material/Inbox';
 import MailIcon from '@mui/icons-material/Mail';
 
@@ -36,7 +36,6 @@ import DrawerFooter from './DrawerFooter';
 import MenuItems from './MenuItems';
 import { useState } from 'react';
 
-
 function DrawerMenu() {
 
     const [currentMenu, setCurrentMenu] = useState('Home');
@@ -63,7 +62,15 @@ function DrawerMenu() {
         "Downloads": <DownloadIcon sx={{ color: 'white' }} />
     }
 
-    const subscriptions = ['Jason Goodison', 'Caleb Curry', 'theNewBoston', 'take U forward', 'Matt Wolfe'] // Show more
+    // const subscriptions = ['Jason Goodison', 'Caleb Curry', 'theNewBoston', 'take U forward', 'Matt Wolfe'] // Show more
+
+    const subscriptions = {
+        'Jason Goodison': <Avatar sx={{ bgcolor: 'red', width: 36, height: 36, mt: 0.5 }}>J</Avatar>,
+        'Caleb Curry': <Avatar sx={{ bgcolor: 'blue', width: 36, height: 36, mt: 0.5 }}>C</Avatar>,
+        'theNewBoston': <Avatar sx={{ bgcolor: 'green', width: 36, height: 36, mt: 0.5 }}>T</Avatar>,
+        'take U forward': <Avatar sx={{ bgcolor: 'yello', width: 36, height: 36, mt: 0.5 }}>T</Avatar>,
+        'Matt Wolfe': <Avatar sx={{ bgcolor: 'red', width: 36, height: 36, mt: 0.5 }}>M</Avatar>,
+    }
 
     // const explore = ['Trending', 'Shopping', 'Music', 'Movies & TV', 'Live', 'Gaming', 'News', 'Sports', 'Courses', 'Fashion & Beauty', 'Podcasts', 'Playables']
     const explore = {
@@ -111,7 +118,10 @@ function DrawerMenu() {
                 currentMenu={currentMenu}
                 onMenuClick={handleMenuClick} />
             <Divider sx={{ bgcolor: 'white', opacity: 0.50 }} />
-            <List>
+            <MenuItems items={subscriptions}
+                currentMenu={currentMenu}
+                onMenuClick={handleMenuClick} />
+            {/* <List>
                 {subscriptions.map((text, index) => (
                     <ListItem key={text} disablePadding>
                         <ListItemButton>
@@ -122,7 +132,7 @@ function DrawerMenu() {
                         </ListItemButton>
                     </ListItem>
                 ))}
-            </List>
+            </List> */}
             <Divider sx={{ bgcolor: 'white', opacity: 0.50 }} />
             <MenuItems items={explore}
                 currentMenu={currentMenu}

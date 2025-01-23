@@ -64,7 +64,7 @@ function App() {
   const [drawerOpen, setDrawerOpen] = useState(true);
 
   function handleDrawerClose() {
-    // setDrawerOpen(false);
+    setDrawerOpen(false);
   }
 
   return (

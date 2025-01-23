@@ -3,8 +3,9 @@ import MenuIcon from '@mui/icons-material/Menu';
 import { useState } from "react";
 
 function BurgerMenu({ drawerOpen, setDrawerOpen }) {
-    function toggleDrawer() {
+    function toggleDrawer(event) {
         setDrawerOpen(!drawerOpen);
+        event.stopPropagation();
     }
 
     return (
