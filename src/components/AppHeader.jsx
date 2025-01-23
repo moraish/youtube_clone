@@ -12,7 +12,7 @@ import AccountIcon from "./Toolbar/AccountIcon";
 
 
 
-function AppHeader() {
+function AppHeader({ drawerOpen, setDrawerOpen }) {
 
     return (
         <>
@@ -42,7 +42,7 @@ function AppHeader() {
                         // bgcolor: 'red'
                     }}
                     >
-                        <BurgerMenu />
+                        <BurgerMenu drawerOpen={drawerOpen} setDrawerOpen={setDrawerOpen} />
                         <YoutubeIcon />
                     </Box>
 

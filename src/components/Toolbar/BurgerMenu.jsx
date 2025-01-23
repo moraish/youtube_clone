@@ -2,7 +2,10 @@ import IconButton from "@mui/material/IconButton";
 import MenuIcon from '@mui/icons-material/Menu';
 import { useState } from "react";
 
-function BurgerMenu() {
+function BurgerMenu({ drawerOpen, setDrawerOpen }) {
+    function toggleDrawer() {
+        setDrawerOpen(!drawerOpen);
+    }
 
     return (
         <IconButton
@@ -10,7 +13,7 @@ function BurgerMenu() {
             edge="start"
             color="inherit"
             aria-label="menu"
-            // onClick={toggleDrawer}
+            onClick={toggleDrawer}
             sx={{
                 '&:hover': {
                     bgcolor: 'rgb(66,66,66)'

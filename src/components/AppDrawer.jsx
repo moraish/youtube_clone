@@ -12,15 +12,7 @@ import DrawerMenu from './AppDrawer/DrawerMenu';
 
 const drawerWidth = 240;
 
-export default function AppDrawer() {
-
-
-    const [drawerOpen, setDrawerOpen] = useState(true);
-
-    function toggleDrawer() {
-        console.log("Clicked!")
-        setDrawerOpen(!drawerOpen);
-    }
+export default function AppDrawer({ drawerOpen, setDrawerOpen }) {
 
     function handleDrawerClose() {
         setDrawerOpen(false);
@@ -28,11 +20,13 @@ export default function AppDrawer() {
     return (
 
         <Box sx={{ display: 'flex' }}>
-            <CssBaseline />
-            <AppHeader />
+
+            <Box>
+                <CssBaseline />
+                <AppHeader drawerOpen={drawerOpen} setDrawerOpen={setDrawerOpen} />
 
 
-            <ClickAwayListener onClickAway={handleDrawerClose}>
+
                 <Drawer
                     open={drawerOpen}
                     sx={{
@@ -65,13 +59,14 @@ export default function AppDrawer() {
                     <DrawerMenu />
 
                 </Drawer>
-            </ClickAwayListener>
-            <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
-                <Toolbar />
 
+                <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
+                    <Toolbar />
+
+                </Box>
+                {/*  onClick={toggleDrawer} */}
+                <Button>Click!</Button>
             </Box>
-
-            <Button onClick={toggleDrawer}>Click!</Button>
         </Box>
     );
 }

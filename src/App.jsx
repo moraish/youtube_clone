@@ -5,15 +5,7 @@ import Grid from '@mui/material/Grid2'
 import { useState } from 'react';
 import './App.css';
 import AppDrawer from './components/AppDrawer';
-
-
-import DownloadIcon from '@mui/icons-material/Download';
-import SettingsOutlinedIcon from '@mui/icons-material/SettingsOutlined';
-import OutlinedFlagOutlinedIcon from '@mui/icons-material/OutlinedFlagOutlined';
-import HelpOutlineOutlinedIcon from '@mui/icons-material/HelpOutlineOutlined';
-import FeedbackOutlinedIcon from '@mui/icons-material/FeedbackOutlined';
-
-import { YouTube_Shorts } from './components/AppDrawer/Icons';
+import { ClickAwayListener } from '@mui/material';
 
 
 function App() {
@@ -69,11 +61,10 @@ function App() {
     }
   ]);
 
-  const [sideBarOpen, setSideBarOpen] = useState(true);
+  const [drawerOpen, setDrawerOpen] = useState(true);
 
-  const obj = {
-    "Downloads": <DownloadIcon />,
-    "Cancel": <DownloadIcon />
+  function handleDrawerClose() {
+    // setDrawerOpen(false);
   }
 
   return (
@@ -81,18 +72,21 @@ function App() {
 
 
       <Container sx={{ marginLeft: '240px', marginRight: '0px', width: 'calc(100% - 240px)', overflowX: 'hidden' }} >
-        <AppDrawer />
-        <Grid container spacing={3} sx={{ scale: 'auto' }}>
-          {videos.map((video) => (
-            <VideoCard
-              key={video.id}
-              thumbnail={video.thumbnail}
-              title={video.title}
-              channel_name={video.channel}
-              views={video.views}
-            />
-          ))}
-        </Grid>
+        <AppDrawer drawerOpen={drawerOpen} setDrawerOpen={setDrawerOpen} />
+        {/* <ClickAwayListener */}
+        <ClickAwayListener onClickAway={handleDrawerClose} >
+          <Grid container spacing={3} sx={{ scale: 'auto' }}>
+            {videos.map((video) => (
+              <VideoCard
+                key={video.id}
+                thumbnail={video.thumbnail}
+                title={video.title}
+                channel_name={video.channel}
+                views={video.views}
+              />
+            ))}
+          </Grid>
+        </ClickAwayListener>
 
 
       </Container>
