@@ -1,11 +1,13 @@
 
-import VideoCard from './components/VideoCard'
+import VideoCard from './components/Videos/VideoCard'
 import Container from '@mui/material/Container'
 import Grid from '@mui/material/Grid2'
 import { useState } from 'react';
 import './App.css';
 import AppDrawer from './components/AppDrawer';
-import { ClickAwayListener } from '@mui/material';
+import { Box } from '@mui/material';
+import VideoLayout from './components/Videos/VideoLayout';
+
 
 
 function App() {
@@ -65,35 +67,23 @@ function App() {
 
 
   return (
-    <>
-
-
-      <Container sx={{
+    <Container
+      maxWidth={false}
+      sx={{
         marginLeft: drawerOpen ? '240px' : '0px',
         marginRight: '0px',
         width: drawerOpen ? 'calc(100% - 240px)' : '100%',
-        overflowX: 'hidden'
+        overflowX: 'hidden',
+        // bgcolor: 'red',
+        minHeight: '100vh',
       }} >
-        <AppDrawer drawerOpen={drawerOpen} setDrawerOpen={setDrawerOpen} />
-        {/* <ClickAwayListener */}
 
-        <Grid container spacing={3} sx={{ scale: 'auto' }}>
-          {videos.map((video) => (
-            <VideoCard
-              key={video.id}
-              thumbnail={video.thumbnail}
-              title={video.title}
-              channel_name={video.channel}
-              views={video.views}
-            />
-          ))}
-        </Grid>
+      <AppDrawer drawerOpen={drawerOpen} setDrawerOpen={setDrawerOpen} />
 
 
+      <VideoLayout />
 
-      </Container>
-
-    </>
+    </Container>
   );
 }
 
