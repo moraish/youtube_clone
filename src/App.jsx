@@ -74,7 +74,7 @@ function App() {
         marginRight: '0px',
         width: drawerOpen ? 'calc(100% - 240px)' : '100%',
         overflowX: 'hidden',
-        // bgcolor: 'red',
+        bgcolor: 'black',
         minHeight: '100vh',
       }} >
 
