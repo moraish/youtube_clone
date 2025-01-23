@@ -4,6 +4,7 @@ function MenuItems({ items, currentMenu, onMenuClick }) {
     return (
         <List sx={{
             marginLeft: 2,
+            marginRight: 1
         }}>
             {Object.entries(items).map(([text, icon]) => (
                 <ListItem key={text} disablePadding sx={{

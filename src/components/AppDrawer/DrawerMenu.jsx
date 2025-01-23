@@ -109,6 +109,8 @@ function DrawerMenu() {
 
 
     return (
+
+
         <Box sx={{ overflow: 'auto' }}>
             <MenuItems items={primary_elements}
                 currentMenu={currentMenu}
@@ -150,6 +152,7 @@ function DrawerMenu() {
 
             <DrawerFooter />
         </Box>
+
     )
 }
 

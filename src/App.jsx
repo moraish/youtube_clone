@@ -63,9 +63,6 @@ function App() {
 
   const [drawerOpen, setDrawerOpen] = useState(true);
 
-  function handleDrawerClose() {
-    setDrawerOpen(false);
-  }
 
   return (
     <>
@@ -74,19 +71,19 @@ function App() {
       <Container sx={{ marginLeft: '240px', marginRight: '0px', width: 'calc(100% - 240px)', overflowX: 'hidden' }} >
         <AppDrawer drawerOpen={drawerOpen} setDrawerOpen={setDrawerOpen} />
         {/* <ClickAwayListener */}
-        <ClickAwayListener onClickAway={handleDrawerClose} >
-          <Grid container spacing={3} sx={{ scale: 'auto' }}>
-            {videos.map((video) => (
-              <VideoCard
-                key={video.id}
-                thumbnail={video.thumbnail}
-                title={video.title}
-                channel_name={video.channel}
-                views={video.views}
-              />
-            ))}
-          </Grid>
-        </ClickAwayListener>
+
+        <Grid container spacing={3} sx={{ scale: 'auto' }}>
+          {videos.map((video) => (
+            <VideoCard
+              key={video.id}
+              thumbnail={video.thumbnail}
+              title={video.title}
+              channel_name={video.channel}
+              views={video.views}
+            />
+          ))}
+        </Grid>
+
 
 
       </Container>
