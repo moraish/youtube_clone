@@ -32,11 +32,13 @@ export default function AppDrawer({ drawerOpen, setDrawerOpen }) {
                     sx={{
                         width: drawerWidth,
                         flexShrink: 0,
+                        transition: 'width 225ms cubic-bezier(0.4, 0, 0.2, 1) 0ms',
                         [`& .MuiDrawer-paper`]: {
                             width: drawerWidth,
                             boxSizing: 'border-box',
                             bgcolor: 'black',
                             color: 'white',
+                            transition: 'width 500ms cubic-bezier(0.4, 0, 0.2, 1), margin 500ms cubic-bezier(0.4, 0, 0.2, 1)',
                             '&::-webkit-scrollbar': {
                                 width: '8px',
                             },

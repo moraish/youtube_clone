@@ -68,7 +68,12 @@ function App() {
     <>
 
 
-      <Container sx={{ marginLeft: '240px', marginRight: '0px', width: 'calc(100% - 240px)', overflowX: 'hidden' }} >
+      <Container sx={{
+        marginLeft: drawerOpen ? '240px' : '0px',
+        marginRight: '0px',
+        width: drawerOpen ? 'calc(100% - 240px)' : '100%',
+        overflowX: 'hidden'
+      }} >
         <AppDrawer drawerOpen={drawerOpen} setDrawerOpen={setDrawerOpen} />
         {/* <ClickAwayListener */}
 
