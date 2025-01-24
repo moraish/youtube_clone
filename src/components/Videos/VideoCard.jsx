@@ -51,13 +51,13 @@ function VideoCard({ thumbnail, channel_icon, title, channel_name, views, launch
                             fontWeight: 700,
                             fontSize: 18,
                             color: "rgb(241, 241, 241)"
-                        }}>{title}</Typography>
+                        }}>{title.length > 50 ? title.substring(0, 50) + '...' : title}</Typography>
                     <Typography variant="body2" sx={{
                         fontSize: '0.9rem', color: "rgb(170, 170, 170)"
                     }}>{channel_name}</Typography>
-                    <Typography variant="body2" sx={{
+                    {/* <Typography variant="body2" sx={{
                         fontSize: '0.9rem', color: "rgb(170, 170, 170)"
-                    }}>{views}</Typography>
+                    }}>{views}</Typography> */}
                 </Box>
             </CardContent>
 
