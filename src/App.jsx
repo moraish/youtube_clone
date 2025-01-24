@@ -2,69 +2,55 @@
 import VideoCard from './components/Videos/VideoCard'
 import Container from '@mui/material/Container'
 import Grid from '@mui/material/Grid2'
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import './App.css';
 import AppDrawer from './components/AppDrawer';
 import { Box } from '@mui/material';
 import VideoLayout from './components/Videos/VideoLayout';
+import axios from 'axios';
 
 
 
 function App() {
-  const [videos, setVideos] = useState([
-    {
-      id: 1,
-      thumbnail: 'src/assets/1.jpg',
-      title: 'Arsenal Vs Tottenham - Highlights',
-      channel: 'NBC Sports',
-      views: '100K',
-    },
-    {
-      id: 2,
-      thumbnail: 'src/assets/2.jpg',
-      title: 'Moving to California',
-      channel: 'Taleb Markenov',
-      views: '200K',
-    },
-    {
-      id: 3,
-      thumbnail: 'src/assets/3.jpg',
-      title: 'Sneak Archers',
-      channel: 'T90 Official',
-      views: '300K',
-    },
-    {
-      id: 4,
-      thumbnail: 'src/assets/4.jpg',
-      title: '1000x your productivity',
-      channel: 'Better Everyday',
-      views: '400K',
-    },
-    {
-      id: 5,
-      thumbnail: 'src/assets/5.jpg',
-      title: 'Game of Thrones - Epic plothole',
-      channel: 'Epic Battles',
-      views: '500K',
-    },
-    {
-      id: 6,
-      thumbnail: 'src/assets/6.jpg',
-      title: 'Barca cruises to victory',
-      channel: 'NBC Sports',
-      views: '600K',
-    },
-    {
-      id: 7,
-      thumbnail: 'src/assets/7.jpg',
-      title: 'InnerGize - Hit or Flop?',
-      channel: 'Sharktank India',
-      views: '700K',
-    }
-  ]);
-
+  const [videos, setVideos] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
   const [drawerOpen, setDrawerOpen] = useState(true);
 
+  const fetchYouTubeVideos = async () => {
+    const API_KEY = 'AIzaSyB66mRmWnKaKJwKSOmnkMTjgIf7p81Qu0k';
+    const API_URL = `https://www.googleapis.com/youtube/v3/search?key=${API_KEY}&type=video&part=snippet&maxResults=50`;
+    // console.log(2)
+    try {
+      const response = await axios.get(API_URL);
+
+      // Transform YouTube API response to match your state structure
+      const formattedVideos = response.data.items.map((item, index) => ({
+        id: item.id.videoId || index, // Use videoId or fallback to index
+        thumbnail: item.snippet.thumbnails.high.url,
+        title: item.snippet.title,
+        channel: item.snippet.channelTitle,
+        views: 'N/A', // YouTube Search API doesn't provide view count
+        publishedAt: item.snippet.publishedAt
+      }));
+
+      // console.log('Fetched Videos:', formattedVideos);
+
+
+      // Update videos state
+      setVideos(formattedVideos);
+      setLoading(false);
+    } catch (err) {
+      // console.log(err);
+      setError(err);
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    // console.log(1)
+    fetchYouTubeVideos();
+  }, []);
 
   return (
     <Container
@@ -81,7 +67,7 @@ function App() {
       <AppDrawer drawerOpen={drawerOpen} setDrawerOpen={setDrawerOpen} />
 
 
-      <VideoLayout />
+      <VideoLayout videos={videos} setVideos={setVideos} />
 
     </Container>
   );
